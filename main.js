@@ -63,6 +63,16 @@ ScrollReveal().reveal(".header-content p", {
 });
 ScrollReveal().reveal(".deals-card", {
   ...scrollRevealOption,
-  delay: 100,
+  delay: 1000,
   origin: "bottom"
+});
+ScrollReveal().reveal(".about-image img", {
+  ...scrollRevealOption,
+  delay: 100,
+  origin: "right"
+});
+ScrollReveal().reveal(".about-card", {
+  duration:1000,
+  interval:500,
+  delay: 100
 });
