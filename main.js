@@ -37,3 +37,27 @@ document.addEventListener("click", (e) => {
     navSearch.classList.remove("open");
   }
 });
+
+//scrol reval script animated scroliing
+const scrollRevealOption = {
+  distance: "50px",
+  // from where
+  origin: "left", 
+  duration: 1000,
+};
+ScrollReveal().reveal(".header-image img", {
+  ...scrollRevealOption,
+  origin: "right",
+});
+ScrollReveal().reveal(".header-content div", {
+  duration: 1000,
+  delay: 500,
+});
+ScrollReveal().reveal(".header-content h1", {
+  ...scrollRevealOption,
+  delay: 1000,
+});
+ScrollReveal().reveal(".header-content p", {
+  ...scrollRevealOption,
+  delay: 1500,
+});
