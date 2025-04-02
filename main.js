@@ -55,9 +55,14 @@ ScrollReveal().reveal(".header-content div", {
 });
 ScrollReveal().reveal(".header-content h1", {
   ...scrollRevealOption,
-  delay: 1000,
+  delay: 100,
 });
 ScrollReveal().reveal(".header-content p", {
   ...scrollRevealOption,
-  delay: 1500,
+  delay: 100,
+});
+ScrollReveal().reveal(".deals-card", {
+  ...scrollRevealOption,
+  delay: 100,
+  origin: "bottom"
 });

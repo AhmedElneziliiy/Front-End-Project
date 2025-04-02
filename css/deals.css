@@ -1,0 +1,42 @@
+.deals-container {
+    display: grid;
+    gap: 2rem;
+}
+  
+.deals-card span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+  
+.deals-card h4 {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+  
+.deals-card p {
+    color: var(--text-light);
+}
+@media (width > 585px) {
+    .deals-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+}
+@media (width > 768px) {
+    .deals-container{
+        grid-template-columns: repeat(3,1fr);
+    }
+    .deals-card:nth-child(1){
+        grid-column: 1/4;
+    }
+}
+@media (width > 1145px){
+    .deals-container{
+        grid-template-columns: repeat(4,1fr);
+    }
+    .deals-card:nth-child(1){
+        grid-column: unset;
+    }
+}
