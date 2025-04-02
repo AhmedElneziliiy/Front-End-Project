@@ -1,0 +1,49 @@
+:root{
+    --primary-color: #254d4d;
+    --text-dark: #171717;
+    --text-light: #737373;
+    --extra-light: #f4f6f5;
+    --white: #ffffff;
+    --max-width: 1200px;
+    --header-font: "Merriweather", serif;
+    --main-transition:0.5;
+}
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.section__description {
+    font-size: 1.1rem;
+    color: var(--text-light);
+}
+  
+.logo {
+    font-size: 1.5rem;
+    font-weight: 600;
+    font-family: var(--header-font);
+}
+  
+img {
+    display: flex;
+    width: 100%;
+}
+  
+a {
+    text-decoration: none;
+    transition: 0.3s;
+}
+  
+ul {
+    list-style: none;
+}
+  
+html,
+body {
+      scroll-behavior: smooth;
+}
+  
+body {
+    font-family: "Poppins", sans-serif;
+}

@@ -1,0 +1,119 @@
+nav{
+    position: fixed;
+    isolation: isolate;
+    width: 100%;
+    max-width: var(--max-width);
+    margin-inline:auto;
+    z-index:10;
+}
+.header{
+    padding: 1rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+}
+.nav-logo .logo {
+color: var(--white);
+}
+.nav-menu-btn {
+    font-size: 1.5rem;
+    color: var(--white);
+    cursor: pointer;
+}
+.nav-links{
+    position: absolute;
+    top:65px;
+    left: 0;
+    width: 100%;
+    pad: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--primary-color);
+    /* transition: var(--main-transition); */
+    z-index: -1;
+    transform: translateY(-100%);
+}
+/* default and we toggle it in the js file */
+.nav-links.open{
+    transform: translateY(0);
+}
+.nav-links a{
+    font-weight: 500;
+    color: var(--white);
+}
+.nav-search{
+    display: none;
+}
+@media (width > 767px){
+    nav{
+        position: static;
+        padding: 2rem 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2rem;
+    }
+    .header{
+        flex: 1;
+        padding: 0;
+        background-color: transparent;
+    }
+    .nav-menu-btn{
+        display: none;
+    }
+    .nav-logo .logo{
+        color: var(--primary-color);
+    }
+    .nav-links {
+        position: static;
+        padding: 0;
+        width: fit-content;
+        flex-direction: row;
+        gap: 3rem;
+        background-color: transparent;
+        transform: none;
+    }
+    .nav-links a {
+        color: var(--text-dark);
+    }
+    .nav-links a:hover {
+        color: var(--primary-color);
+    }
+    
+    .nav-search {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1rem;
+    }
+    
+    .nav-search input {
+        padding-block: 5px;
+        outline: none;
+        border: none;
+        width: 0;
+        font-size: 1rem;
+        color: var(--text-dark);
+        border-bottom: 1px solid var(--text-light);
+        transition: 0.3s;
+    }
+    
+    .nav-search.open input {
+        width: 100%;
+        max-width: 15rem;
+    }
+    
+    .nav-search span {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        cursor: pointer;
+    }
+
+}
