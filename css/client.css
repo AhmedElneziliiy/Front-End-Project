@@ -1,8 +1,9 @@
 .client-content {
   padding: 4rem 1rem;
-  background-color: var(--extra-light);
+  background-color: #f5f5f5; /* Fallback for --extra-light */
   border-radius: 1rem;
 }
+
 .client-content :is(.section-header, .section-description) {
   max-width: 550px;
   margin-inline: auto;
@@ -13,9 +14,23 @@
   font-size: 3.25rem;
 }
 
-.swiper {
+.slider {
   margin-top: 4rem;
   width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: 2rem; /* Space for pagination */
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.slide {
+  min-width: 100%; /* Each slide takes full width */
+  box-sizing: border-box;
 }
 
 .client-card {
@@ -34,38 +49,42 @@
 .client-card p {
   margin-bottom: 2rem;
   font-size: 1.2rem;
-  color: var(--text-light);
+  color: #666; /* Fallback for --text-light */
   font-style: italic;
 }
 
 .client-card h4 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-dark);
+  color: #333; /* Fallback for --text-dark */
 }
 
 .client-card h5 {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--text-light);
+  color: #666; /* Fallback for --text-light */
 }
 
-/* Pagination dots styling */
-.swiper-pagination {
-  margin-top: 2rem;
-  position: relative;
+.pagination {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
 }
 
-.swiper-pagination-bullet {
+.dot {
   width: 10px;
   height: 10px;
-  background-color: var(--text-light);
+  background-color: #666; /* Fallback for --text-light */
   opacity: 0.5;
-  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.swiper-pagination-bullet-active {
-  background-color: var(--text-dark);
+.dot.active {
+  background-color: #333; /* Fallback for --text-dark */
   opacity: 1;
 }
 

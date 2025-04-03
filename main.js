@@ -85,16 +85,66 @@ ScrollReveal().reveal(".client-content", {
   interval:100,
   origin: "top"
 });
-// End Animations
-// Start Swiper
-const swiper = new Swiper(".swiper", {
-  loop: true,
-  autoplay: {
-    delay: 2500,
-    disableOnInteraction: false, 
-  },
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
+
+// Start Slider
+// 
+// 
+//
+const slides = document.querySelector('.slides');
+const slideElements = [...document.querySelectorAll('.slide')];
+const pagination = document.querySelector('.pagination');
+const totalSlides = slideElements.length;
+let index = 1, autoplay;
+
+// Add a copy of first slide to end
+slides.append(slideElements[0].cloneNode(true));
+// Add a copy of last slide to start
+slides.prepend(slideElements[totalSlides - 1].cloneNode(true));
+
+const allSlides = document.querySelectorAll('.slide');//save it
+slides.style.transform = `translateX(-${index * 100}%)`;//
+//creating div and make it dot style and activate the slide dot
+slideElements.forEach((_, i) => {
+  const dot = document.createElement('div');
+  dot.classList.add('dot', i === 0 && 'active');
+  dot.addEventListener('click', () => {
+    goToSlide(i + 1);
+    resetAutoplay();
+  });
+  pagination.append(dot);
 });
+
+const dots = document.querySelectorAll('.dot');
+
+function updateSlide() {
+  slides.style.transition = 'transform 0.5s ease-in-out';
+  slides.style.transform = `translateX(-${index * 100}%)`;
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === ((index - 1 + totalSlides) % totalSlides)));
+}
+
+function goToSlide(i) {
+  index = i;
+  updateSlide();
+}
+// عندما يصل السلايدر إلى آخر شريحة وهمية → يرجع فورًا إلى أول شريحة حقيقية بدون تأثير مرئي.
+slides.addEventListener('transitionend', () => {
+  if (index === allSlides.length - 1) index = 1;
+  if (index === 0) index = totalSlides;
+  slides.style.transition = 'none';
+  slides.style.transform = `translateX(-${index * 100}%)`;
+});
+
+function startAutoplay() {
+  autoplay = setInterval(() => {
+    index++;
+    updateSlide();
+  }, 2000);
+}
+
+function resetAutoplay() {
+  clearInterval(autoplay);
+  startAutoplay();
+}
+
+startAutoplay();
+updateSlide();
