@@ -148,3 +148,30 @@ function resetAutoplay() {
 
 startAutoplay();
 updateSlide();
+
+// Cart functionality
+
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        const card = e.target.closest('.product-card');
+        const product = {
+            id: card.dataset.id,
+            name: card.dataset.name,
+            price: parseFloat(card.dataset.price),
+            image: card.dataset.image,
+            quantity: 1
+        };
+        
+        const existingItem = cart.find(item => item.id === product.id);
+        if (existingItem) {
+            existingItem.quantity += 1; // Increment quantity if product exists
+        } else {
+            cart.push(product); // Add new product if it doesn't exist
+        }
+        
+        localStorage.setItem('cart', JSON.stringify(cart));
+        window.location.href = 'cart.html';
+    });
+});

@@ -49,6 +49,10 @@ color: var(--white);
 .nav-search{
     display: none;
 }
+.nav-cart i{
+    font-size: 1.8rem;
+    color: var(--primary-color);
+}
 @media (width > 767px){
     nav{
         position: static;
@@ -116,4 +120,19 @@ color: var(--white);
         cursor: pointer;
     }
 
+}
+.shopping-icon{
+    font-size: 1.6em;
+}
+
+@media (width < 767px){
+    .nav-cart i{
+        display: none;
+    }
+}
+@media (width > 767px){
+
+.shopping-icon{
+    display: none;
+}
 }
