@@ -45,6 +45,7 @@ const scrollRevealOption = {
   origin: "left", 
   duration: 1000,
 };
+
 ScrollReveal().reveal(".header-image img", {
   ...scrollRevealOption,
   origin: "right",
