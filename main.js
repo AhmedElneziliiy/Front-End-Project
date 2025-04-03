@@ -45,7 +45,7 @@ const scrollRevealOption = {
   origin: "left", 
   duration: 1000,
 };
-
+// Start Animation
 ScrollReveal().reveal(".header-image img", {
   ...scrollRevealOption,
   origin: "right",
@@ -76,4 +76,18 @@ ScrollReveal().reveal(".about-card", {
   duration:1000,
   interval:500,
   delay: 100
+});
+ScrollReveal().reveal(".product-card", {
+  interval:100
+});
+ScrollReveal().reveal(".client-content", {
+  duration:1500,
+  interval:100,
+  origin: "top"
+});
+// End Animations
+
+// swiper
+const swiper = new Swiper(".swiper", {
+  loop: true,
 });
