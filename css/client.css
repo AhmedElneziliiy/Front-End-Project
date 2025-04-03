@@ -1,10 +1,8 @@
-
 .client-content {
   padding: 4rem 1rem;
   background-color: var(--extra-light);
   border-radius: 1rem;
 }
-
 .client-content :is(.section-header, .section-description) {
   max-width: 550px;
   margin-inline: auto;
@@ -52,10 +50,29 @@
   color: var(--text-light);
 }
 
+/* Pagination dots styling */
+.swiper-pagination {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.swiper-pagination-bullet {
+  width: 10px;
+  height: 10px;
+  background-color: var(--text-light);
+  opacity: 0.5;
+  margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--text-dark);
+  opacity: 1;
+}
+
 @media (width > 768px) {
-    .client-card {
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
-        text-align: left;
-    }
+  .client-card {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: left;
+  }
 }
