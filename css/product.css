@@ -37,12 +37,11 @@
     margin-inline:auto;
 }
 
-/* Added button when Hovering */
+/* Added button when Hovering desktop view*/
 .product-card {
     position: relative;
     transition: all 0.3s ease;
 }
-
 .product-card .add-to-cart-btn {
     position: absolute;
     bottom: 10px;
@@ -64,13 +63,30 @@
 .product-card:hover {
     box-shadow: 0 4px 15px #316666;
 }
-@media(width > 540px){
-    .product-grid{
-        grid-template-columns: repeat(2,1fr);  
+
+@media (width >= 540px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
-@media(width > 768px){
-    .product-grid{
-        grid-template-columns: repeat(3,1fr);  
+@media (width > 768px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+@media (width < 540px) {
+    .product-card .add-to-cart-btn {
+        opacity: 1; 
+    }
+    .product-card:hover .add-to-cart-btn {
+        opacity: 1; 
+    }
+}
+@media (width < 768px) {
+    .product-card .add-to-cart-btn {
+        opacity: 1; 
+    }
+    .product-card:hover .add-to-cart-btn {
+        opacity: 1; 
     }
 }
