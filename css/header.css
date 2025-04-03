@@ -1,7 +1,7 @@
 .header-container {
    display: grid;
    /* to avoid deprecation */
-   /* overflow: hidden; */
+   overflow: hidden;
 }
 .header-image {
     /* row-start col-start row-end col-end*/
@@ -35,11 +35,17 @@
     font-size: 1.2rem;
     color: var(--text-light);
 }
-/* @media(width < 767px){
-    .header-content {
+
+@media (width > 1446px) {
+    .header-container{
         display: flex;
+        flex-direction: row-reverse;
         justify-content: center;
-        align-items: center;
-        align-content: center;
     }
-} */
+}
+@media (width > 768px) {
+    .header-container{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}
