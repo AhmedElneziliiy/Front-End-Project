@@ -1,42 +1,89 @@
-const menuBtn = document.getElementById("menu-btn");
-const navLinks = document.getElementById("nav-links");
-const menuBtnIcon = menuBtn.querySelector("i");
-// open and close menu 
-menuBtn.addEventListener("click", (e) => {
-  navLinks.classList.toggle("open");
-    //changing menu icon
-  const isOpen = navLinks.classList.contains("open");
-  menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
-});
-// close menu when clicking ang of it's sections
-navLinks.addEventListener("click", (e) => {
-    navLinks.classList.remove("open");
-    menuBtnIcon.setAttribute("class", "ri-menu-line");
+// Loading products from JSON file and displaying them 
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const searchIcon = document.getElementById("search-icon"); // New: Target the search icon
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+let products = [];
+
+// Fetch products from JSON file
+fetch("products.json")
+    .then((res) => res.json())
+    .then((data) => {
+        products = data;
+        displayProducts(products);
+    });
+
+// Function to display products
+function displayProducts(items) {
+    productGrid.innerHTML = "";
+
+    items.forEach((product) => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.setAttribute("data-id", product.id);
+        card.setAttribute("data-name", product.name);
+        card.setAttribute("data-price", product.price);
+        card.setAttribute("data-image", product.image);
+
+        card.innerHTML = `
+            <h4>${product.name}</h4>
+            <p>$${product.price}</p>
+            <img src="${product.image}" alt="${product.name}" />
+            <button class="add-to-cart-btn">Add to Cart</button>
+        `;
+
+        // Add click event to button after it is created
+        card.querySelector('.add-to-cart-btn').addEventListener('click', () => {
+            const productData = {
+                id: product.id,
+                name: product.name,
+                price: parseFloat(product.price),
+                image: product.image,
+                quantity: 1
+            };
+
+            const existingItem = cart.find(item => item.id === productData.id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push(productData);
+            }
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            window.location.href = 'cart.html';
+        });
+
+        productGrid.appendChild(card);
+    });
+}
+
+// Filter products on search
+searchInput.addEventListener("keyup", () => {
+    const term = searchInput.value.toLowerCase();
+    const filtered = products.filter((product) =>
+        product.name.toLowerCase().includes(term)
+    );
+    displayProducts(filtered);
 });
 
-//open search icon text box
-
-const navSearch = document.getElementById("nav-search");
-const searchInput = navSearch.querySelector("input");
-
-navSearch.addEventListener("click", (e) => {
-  navSearch.classList.toggle("open");
-  //making the input ready for typing putting the cursor in it
-  searchInput.focus(); 
+// New: Focus the search input when the search icon is clicked
+searchIcon.addEventListener("click", () => {
+    searchInput.focus(); // Places the cursor in the search input
+    // Optional: Scroll to the product section smoothly
+    document.getElementById("product").scrollIntoView({ behavior: "smooth" });
 });
 
-// Prevents search bar from closing when clicking inside the input
-searchInput.addEventListener("click", (e) => {
-    // to avoid event bubbling تصاعد الأحداث.
-  e.stopPropagation();
-});
 
-// Close search input when clicking outside
-document.addEventListener("click", (e) => {
-  if (!navSearch.contains(e.target)) {
-    navSearch.classList.remove("open");
-  }
-});
+
+
+
+
+
+
+
+
+
+
 
 
 // Animation configuration
@@ -98,9 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Start Slider
-// 
-// 
-//
+// Slider configuration
 const slides = document.querySelector('.slides');
 const slideElements = [...document.querySelectorAll('.slide')];
 const pagination = document.querySelector('.pagination');
@@ -159,30 +204,4 @@ function resetAutoplay() {
 
 startAutoplay();
 updateSlide();
-
-// Cart functionality
-
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
-        const card = e.target.closest('.product-card');
-        const product = {
-            id: card.dataset.id,
-            name: card.dataset.name,
-            price: parseFloat(card.dataset.price),
-            image: card.dataset.image,
-            quantity: 1
-        };
-        
-        const existingItem = cart.find(item => item.id === product.id);
-        if (existingItem) {
-            existingItem.quantity += 1; // Increment quantity if product exists
-        } else {
-            cart.push(product); // Add new product if it doesn't exist
-        }
-        
-        localStorage.setItem('cart', JSON.stringify(cart));
-        window.location.href = 'cart.html';
-    });
-});
+// End Slider

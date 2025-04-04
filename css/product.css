@@ -1,3 +1,8 @@
+#searchInput{
+    margin-bottom: 0px;
+    margin-top: -5px;
+    padding: 7px 9px;
+}
 .product-grid{
     margin-top:4rem;
     display: grid;

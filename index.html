@@ -22,30 +22,29 @@
 </head>
 <body>
     <!-- Start Navbar -->
-        <nav>
-            <div class="header">
-                <div class="nav-logo">
-                    <a href="#" class="logo">Ikea.Shop</a>
-                </div>
-                <div class="nav-menu-btn" id="menu-btn">
-                    <i class ="ri-menu-line"></i>
-                </div>
-            </div>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#product">Products</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li><a href="cart.html" class="shopping-icon"><i class="ri-shopping-cart-2-line"></i></a></li>
-            </ul>
-            <div class="nav-search" id="nav-search">
-                <input type="text" placeholder="Search">
-                <span><i class="ri-search-2-line"></i></span>
-            </div>
-            <div class="nav-cart">
-              <a href="cart.html"><i class="ri-shopping-cart-2-line"></i></a>
-            </div>
-        </nav>
+    <nav>
+      <div class="header">
+          <div class="nav-logo">
+              <a href="#" class="logo">Ikea.Shop</a>
+          </div>
+          <div class="nav-menu-btn" id="menu-btn">
+              <i class="ri-menu-line"></i>
+          </div>
+      </div>
+      <ul class="nav-links" id="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#product">Products</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="cart.html" class="shopping-icon"><i class="ri-shopping-cart-2-line"></i></a></li>
+      </ul>
+      <div class="nav-search" id="nav-search">
+          <span id="search-icon"><i class="ri-search-2-line"></i></span>
+      </div>
+      <div class="nav-cart">
+          <a href="cart.html"><i class="ri-shopping-cart-2-line"></i></a>
+      </div>
+  </nav>
     <!-- End Navbar -->
      <!-- Start Header -->
      <header class="header-container" id="home">
@@ -139,50 +138,16 @@
         </div>
       </section>
     <!-- End About -->
-     <!-- Start Product -->
+
+
      <!-- Start Product -->
      <section class="section-container product-container" id="product">
       <h2 class="section-header">Products</h2>
-      <div class="product-grid">
-          <div class="product-card" data-id="1" data-name="Stackable Chair" data-price="87.00" data-image="assets/product-1.png">
-              <h4>Stackable Chair</h4>
-              <p>$87.00</p>
-              <img src="assets/product-1.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="product-card" data-id="2" data-name="Lamp Tool" data-price="35.00" data-image="assets/product-2.png">
-              <h4>Lamp Tool</h4>
-              <p>$35.00</p>
-              <img src="assets/product-2.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="product-card" data-id="3" data-name="Dining Chair" data-price="55.00" data-image="assets/product-3.png">
-              <h4>Dining Chair</h4>
-              <p>$55.00</p>
-              <img src="assets/product-3.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="product-card" data-id="4" data-name="Hand Base Lamp" data-price="35.00" data-image="assets/product-4.png">
-              <h4>Hand Base Lamp</h4>
-              <p>$35.00</p>
-              <img src="assets/product-4.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="product-card" data-id="5" data-name="Stylish Chair" data-price="45.00" data-image="assets/product-5.png">
-              <h4>Stylish Chair</h4>
-              <p>$45.00</p>
-              <img src="assets/product-5.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
-          <div class="product-card" data-id="6" data-name="Vintage Chair" data-price="65.00" data-image="assets/product-6.png">
-              <h4>Vintage Chair</h4>
-              <p>$65.00</p>
-              <img src="assets/product-6.png" alt="product" />
-              <button class="add-to-cart-btn">Add to Cart</button>
-          </div>
+      <input type="text" id="searchInput" placeholder="Search products..." />
+      <div class="product-grid" id="productGrid">
+          <!-- Products will be inserted here -->
       </div>
   </section>
-<!-- End Product -->
      <!-- End Product -->
 
     <!-- Start Client -->

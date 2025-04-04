@@ -1,0 +1,39 @@
+[
+    {
+      "id": 1,
+      "name": "Stackable Chair",
+      "price": "87.00",
+      "image": "assets/product-1.png"
+    },
+    {
+      "id": 2,
+      "name": "Lamp Tool",
+      "price": "35.00",
+      "image": "assets/product-2.png"
+    },
+    {
+      "id": 3,
+      "name": "Dining Chair",
+      "price": "55.00",
+      "image": "assets/product-3.png"
+    },
+    {
+      "id": 4,
+      "name": "Hand Base Lamp",
+      "price": "35.00",
+      "image": "assets/product-4.png"
+    },
+    {
+      "id": 5,
+      "name": "Stylish Chair",
+      "price": "45.00",
+      "image": "assets/product-5.png"
+    },
+    {
+      "id": 6,
+      "name": "Vintage Chair",
+      "price": "65.00",
+      "image": "assets/product-6.png"
+    }
+  ]
+  
