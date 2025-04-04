@@ -38,53 +38,64 @@ document.addEventListener("click", (e) => {
   }
 });
 
-//scrol reval script animated scroliing
-const scrollRevealOption = {
-  distance: "50px",
-  // from where
-  origin: "left", 
-  duration: 1000,
-};
-// Start Animation
-ScrollReveal().reveal(".header-image img", {
-  ...scrollRevealOption,
-  origin: "right",
+
+// Animation configuration
+document.addEventListener('DOMContentLoaded', () => {
+  const animationConfig = {
+      '.header-image img': { duration: '1000ms', origin: 'right', delay: '0ms' },
+      '.header-content div': { duration: '1000ms', delay: '500ms' },
+      '.header-content h1': { duration: '1000ms', origin: 'left', delay: '100ms' },
+      '.header-content p': { duration: '1000ms', origin: 'left', delay: '100ms' },
+      '.deals-card': { duration: '1000ms', origin: 'bottom', delay: '1000ms' },
+      '.about-image img': { duration: '1000ms', origin: 'right', delay: '100ms' },
+      '.about-card': { duration: '1000ms', delay: '100ms', interval: '500ms' },
+      '.product-card': { duration: '1000ms', interval: '100ms' },
+      '.client-content': { duration: '1500ms', origin: 'top', interval: '100ms' }
+  };
+
+  // Set up Intersection Observer
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const element = entry.target;
+              const config = animationConfig[element.dataset.animate];
+              
+              // Apply duration
+              element.style.transitionDuration = config.duration;
+              
+              // Apply delay
+              element.style.transitionDelay = config.delay || '0ms';
+              
+              // Handle interval for multiple elements
+              if (config.interval) {
+                  const siblings = document.querySelectorAll(element.dataset.animate);
+                  const index = Array.from(siblings).indexOf(element);
+                  const totalDelay = parseInt(config.delay || 0) + (index * parseInt(config.interval));
+                  element.style.transitionDelay = `${totalDelay}ms`;
+              }
+
+              // Make visible
+              element.classList.add('is-visible');
+              observer.unobserve(element);
+          }
+      });
+  }, {
+      threshold: 0.1 // Trigger when 10% of element is visible
+  });
+
+  // Apply animation attributes to elements
+  Object.keys(animationConfig).forEach(selector => {
+      const elements = document.querySelectorAll(selector);
+      elements.forEach(element => {
+          element.dataset.animate = selector;
+          if (animationConfig[selector].origin) {
+              element.dataset.origin = animationConfig[selector].origin;
+          }
+          observer.observe(element);
+      });
+  });
 });
-ScrollReveal().reveal(".header-content div", {
-  duration: 1000,
-  delay: 500,
-});
-ScrollReveal().reveal(".header-content h1", {
-  ...scrollRevealOption,
-  delay: 100,
-});
-ScrollReveal().reveal(".header-content p", {
-  ...scrollRevealOption,
-  delay: 100,
-});
-ScrollReveal().reveal(".deals-card", {
-  ...scrollRevealOption,
-  delay: 1000,
-  origin: "bottom"
-});
-ScrollReveal().reveal(".about-image img", {
-  ...scrollRevealOption,
-  delay: 100,
-  origin: "right"
-});
-ScrollReveal().reveal(".about-card", {
-  duration:1000,
-  interval:500,
-  delay: 100
-});
-ScrollReveal().reveal(".product-card", {
-  interval:100
-});
-ScrollReveal().reveal(".client-content", {
-  duration:1500,
-  interval:100,
-  origin: "top"
-});
+
 
 // Start Slider
 // 

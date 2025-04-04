@@ -59,3 +59,46 @@ body {
 body {
     font-family: "Poppins", sans-serif;
 }
+
+/* Native Animations */
+/* Base animation styles */
+[data-animate] {
+    opacity: 0;
+    transition: all ease-out;
+    transform: translateY(50px); /* Default distance */
+}
+
+/* When element is in view */
+[data-animate].is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Specific origin variations */
+[data-animate][data-origin="left"] {
+    transform: translateX(-50px);
+}
+[data-animate][data-origin="left"].is-visible {
+    transform: translateX(0);
+}
+
+[data-animate][data-origin="right"] {
+    transform: translateX(50px);
+}
+[data-animate][data-origin="right"].is-visible {
+    transform: translateX(0);
+}
+
+[data-animate][data-origin="top"] {
+    transform: translateY(-50px);
+}
+[data-animate][data-origin="top"].is-visible {
+    transform: translateY(0);
+}
+
+[data-animate][data-origin="bottom"] {
+    transform: translateY(50px);
+}
+[data-animate][data-origin="bottom"].is-visible {
+    transform: translateY(0);
+}
