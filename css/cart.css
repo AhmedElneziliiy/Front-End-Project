@@ -147,7 +147,7 @@
     }
 
     .cart-item img {
-        width: 50px; /* Even smaller for mobile */
+        width: 50px; 
     }
 
     .quantity-controls button {

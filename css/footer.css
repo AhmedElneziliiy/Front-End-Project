@@ -1,6 +1,6 @@
 
 .footer {
-  background-color: var(--primary-color);
+  background-color: var(--nav-bg);
 }
 
 .footer-container {
@@ -18,7 +18,7 @@
 
 .footer-col p {
   margin-bottom: 2rem;
-  color: var(--extra-light);
+  color: var(--white);
   opacity: 0.8;
 }
 
@@ -32,7 +32,9 @@
   font-size: 1.5rem;
   color: var(--white);
 }
-
+.footer li a{
+  color: var(--white);
+}
 .footer-socials a:hover {
   opacity: 0.5;
 }

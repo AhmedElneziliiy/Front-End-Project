@@ -47,4 +47,29 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Error loading product:", error);
             document.getElementById("product-card").innerHTML = "<p>Error loading product details.</p>";
         });
+
+        //dark mode
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const root = document.documentElement;
+        
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            root.setAttribute('data-theme', savedTheme);
+            themeIcon.classList.toggle('ri-moon-line', savedTheme === 'dark');
+            themeIcon.classList.toggle('ri-sun-line', savedTheme !== 'dark');
+        }
+        
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = root.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            root.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Toggle icon
+            themeIcon.classList.toggle('ri-moon-line');
+            themeIcon.classList.toggle('ri-sun-line');
+        });
 });

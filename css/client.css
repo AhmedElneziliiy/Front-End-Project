@@ -1,6 +1,6 @@
 .client-content {
   padding: 4rem 1rem;
-  background-color: #f5f5f5; /* Fallback for --extra-light */
+  background-color: var(--card-bg); /* Fallback for --extra-light */
   border-radius: 1rem;
 }
 
@@ -19,7 +19,7 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  padding-bottom: 2rem; /* Space for pagination */
+  padding-bottom: 2rem; 
 }
 
 .slides {
@@ -77,14 +77,14 @@
 .dot {
   width: 10px;
   height: 10px;
-  background-color: #666; /* Fallback for --text-light */
+  background-color: var(--pagintaion);
   opacity: 0.5;
   border-radius: 50%;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: #333; /* Fallback for --text-dark */
+  background-color: #ffffff;
   opacity: 1;
 }
 
