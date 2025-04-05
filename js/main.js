@@ -1,3 +1,4 @@
+// 1- logic to toggle the menu
 const menuBtn = document.getElementById("menu-btn");
 const navLinks = document.getElementById("nav-links");
 const menuBtnIcon = menuBtn.querySelector("i");
@@ -5,17 +6,20 @@ const menuBtnIcon = menuBtn.querySelector("i");
 menuBtn.addEventListener("click", (e) => {
   navLinks.classList.toggle("open");
 
+//changing icon when openinig the droplist
   const isOpen = navLinks.classList.contains("open");
   menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
 });
 
+
 navLinks.addEventListener("click", (e) => {
+//changing class to close
   navLinks.classList.remove("open");
   menuBtnIcon.setAttribute("class", "ri-menu-line");
 });
 
 
-// Loading products from JSON file and displaying them 
+// 2-Loading products from JSON file and displaying them 
 const productGrid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
 const searchIcon = document.getElementById("search-icon");
@@ -61,13 +65,15 @@ function displayProducts(items) {
                 quantity: 1
             };
 
+            //check if the product in the cart if it is add trhe quantity
+            // if is not add it to cart
             const existingItem = cart.find(item => item.id === productData.id);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
                 cart.push(productData);
             }
-
+            //saving progress to local sstorage
             localStorage.setItem('cart', JSON.stringify(cart));
             window.location.href = 'cart.html';
         });
@@ -76,7 +82,7 @@ function displayProducts(items) {
     });
 }
 
-// Filter products on search
+// Filter products on search by char
 searchInput.addEventListener("keyup", () => {
     const term = searchInput.value.toLowerCase();
     const filtered = products.filter((product) =>
@@ -85,22 +91,11 @@ searchInput.addEventListener("keyup", () => {
     displayProducts(filtered);
 });
 
-// Focus the search input when the search icon is clicked
+// Focus the search input when the search icon is clicked puts the cursor in the search input
 searchIcon.addEventListener("click", () => {
     searchInput.focus();
     document.getElementById("product").scrollIntoView({ behavior: "smooth" });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Animation configuration
@@ -120,35 +115,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // Set up Intersection Observer
   const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        //make sure that elment is displayed
           if (entry.isIntersecting) {
               const element = entry.target;
               const config = animationConfig[element.dataset.animate];
               
               // Apply duration
               element.style.transitionDuration = config.duration;
-              
-              // Apply delay
-              element.style.transitionDelay = config.delay || '0ms';
-              
-              // Handle interval for multiple elements
-              if (config.interval) {
-                  const siblings = document.querySelectorAll(element.dataset.animate);
-                  const index = Array.from(siblings).indexOf(element);
-                  const totalDelay = parseInt(config.delay || 0) + (index * parseInt(config.interval));
-                  element.style.transitionDelay = `${totalDelay}ms`;
-              }
-
               // Make visible
               element.classList.add('is-visible');
               observer.unobserve(element);
           }
       });
   }, {
-      threshold: 0.1 // Trigger when 10% of element is visible
   });
-
   // Apply animation attributes to elements
-  Object.keys(animationConfig).forEach(selector => {
+  // from animation object gets it's behavior and add it for each elment   
+  Object.keys(animationConfig)
+  .forEach(selector => {
       const elements = document.querySelectorAll(selector);
       elements.forEach(element => {
           element.dataset.animate = selector;
@@ -159,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
   });
 });
-
 
 // Start Slider
 // Slider configuration
@@ -176,6 +159,7 @@ slides.prepend(slideElements[totalSlides - 1].cloneNode(true));
 
 const allSlides = document.querySelectorAll('.slide');//save it
 slides.style.transform = `translateX(-${index * 100}%)`;//
+
 //creating div and make it dot style and activate the slide dot
 slideElements.forEach((_, i) => {
   const dot = document.createElement('div');
@@ -223,11 +207,12 @@ startAutoplay();
 updateSlide();
 // End Slider
 
+
 // dark
 // Theme toggle functionality
 const themeToggle = document.getElementById('theme-toggle');
 const themeIcon = themeToggle.querySelector('i');
-const root = document.documentElement;
+const root = document.documentElement;//<html>
 
 // Check for saved theme preference
 const savedTheme = localStorage.getItem('theme');
