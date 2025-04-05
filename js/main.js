@@ -151,7 +151,7 @@ const slideElements = [...document.querySelectorAll('.slide')];
 const pagination = document.querySelector('.pagination');
 const totalSlides = slideElements.length;
 let index = 1, autoplay;
-
+//[1,2,3] => foreach 
 // Add a copy of first slide to end
 slides.append(slideElements[0].cloneNode(true));
 // Add a copy of last slide to start
@@ -206,7 +206,6 @@ function resetAutoplay() {
 startAutoplay();
 updateSlide();
 // End Slider
-
 
 // dark
 // Theme toggle functionality
