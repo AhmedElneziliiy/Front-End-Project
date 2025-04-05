@@ -1,0 +1,5 @@
+@media (width<= 768px) {
+    .product-preview-container h1{
+        padding-top:100px ;
+    }
+}

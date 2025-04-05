@@ -3,7 +3,6 @@
     margin: 0 auto;
     max-width: 1200px;
 }
-
 .cart-items {
     display: flex;
     flex-direction: column;
@@ -20,7 +19,6 @@
     background-color: var(--background-light);
     transition: box-shadow 0.3s ease;
 }
-
 .cart-item:hover {
     box-shadow: 0 4px 15px rgba(49, 102, 102, 0.2);
 }
@@ -173,4 +171,14 @@
         font-size: 1.1em;
         padding: 10px;
     }
+}
+@media (max-width: 768px) {
+    .section-container1 {
+        padding: 100px;
+        margin: 0 auto;
+        max-width: 1200px;
+    }
+}
+@media (max-width:  480px) {
+    h2{width: 208px;}
 }

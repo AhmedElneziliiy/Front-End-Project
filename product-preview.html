@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Preview - Ikea</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet"/>
+    <!-- CSS Files -->
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/navbar.css">
@@ -14,19 +16,19 @@
     <link rel="stylesheet" href="css/client.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/cart.css">
-    <script defer src="js/cart.js"></script>
+    <link rel="stylesheet" href="css/product-preview.css">
     <script defer src="js/main.js"></script>
-    <title>Shopping Cart - Ikea</title>
+    <script defer src="js/product-preview.js"></script>
 </head>
 <body>
-    <!-- Navbar (same as index.html) -->
-     <nav>
+    <!-- Navbar -->
+    <nav>
         <div class="header">
             <div class="nav-logo">
                 <a href="#" class="logo">Ikea.Shop</a>
             </div>
             <div class="nav-menu-btn" id="menu-btn">
-                <i class ="ri-menu-line"></i>
+                <i class="ri-menu-line"></i>
             </div>
         </div>
         <ul class="nav-links" id="nav-links">
@@ -34,28 +36,29 @@
             <li><a href="index.html#about">About</a></li>
             <li><a href="index.html#product">Products</a></li>
             <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="cart.html" class="shopping-icon"><i class="ri-shopping-cart-2-line"></i></a></li>
         </ul>
         <div class="nav-search" id="nav-search">
-            <!-- <input type="text" placeholder="Search"> -->
-            <span><a href="index.html#product"><i class="ri-search-2-line"></i></a></span>
+            <span id="search-icon"><i class="ri-search-2-line"></i></span>
         </div>
         <div class="nav-cart">
-          <a href="cart.html"><i class="ri-shopping-cart-2-line"></i></a>
+            <a href="cart.html"><i class="ri-shopping-cart-2-line"></i></a>
         </div>
-    </nav> 
-
-    <!-- Cart Section -->
-    <section class="section-container1 cart-container">
-        <h2 class="section-header">Your Shopping Cart</h2>
-        <div class="cart-items" id="cart-items">
-            <!-- Cart items will be added here -->
-        </div>
-        <div class="cart-total">
-            <h3>Total: $<span id="total-price">0.00</span></h3>
-            <button class="checkout-btn">Proceed to Checkout</button>
+    </nav>
+    
+    <!-- Product Preview Section -->
+    <section class="product-preview-container">
+        <h1 class="section-header">Product Preview</h1>
+        <div class="product-card" id="product-card">
+            <img id="product-image" src="" alt="Product Image">
+            <div class="product-info">
+                <h2 id="product-name"></h2>
+                <p id="product-description"></p>
+                <p id="product-price"></p>
+                <button class="add-to-cart-btn">Add to Cart</button>
+            </div>
         </div>
     </section>
-
     <!-- Start Footer -->
     <footer class="footer" id="contact">
         <div class="section-container footer-container">

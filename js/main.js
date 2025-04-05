@@ -1,17 +1,39 @@
+const menuBtn = document.getElementById("menu-btn");
+const navLinks = document.getElementById("nav-links");
+const menuBtnIcon = menuBtn.querySelector("i");
+
+menuBtn.addEventListener("click", (e) => {
+  navLinks.classList.toggle("open");
+
+  const isOpen = navLinks.classList.contains("open");
+  menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
+});
+
+navLinks.addEventListener("click", (e) => {
+  navLinks.classList.remove("open");
+  menuBtnIcon.setAttribute("class", "ri-menu-line");
+});
+
+// const navSearch = document.getElementById("nav-search");
+
+// navSearch.addEventListener("click", (e) => {
+//   navSearch.classList.toggle("open");
+// });
 // Loading products from JSON file and displaying them 
 const productGrid = document.getElementById("productGrid");
 const searchInput = document.getElementById("searchInput");
-const searchIcon = document.getElementById("search-icon"); // New: Target the search icon
+const searchIcon = document.getElementById("search-icon");
 let cart = JSON.parse(localStorage.getItem('cart')) || [];
 let products = [];
 
 // Fetch products from JSON file
-fetch("products.json")
+fetch("assets/products.json")
     .then((res) => res.json())
     .then((data) => {
         products = data;
         displayProducts(products);
-    });
+    })
+    .catch((error) => console.error("Error loading products:", error));
 
 // Function to display products
 function displayProducts(items) {
@@ -30,9 +52,10 @@ function displayProducts(items) {
             <p>$${product.price}</p>
             <img src="${product.image}" alt="${product.name}" />
             <button class="add-to-cart-btn">Add to Cart</button>
+            <button class="details-btn" onclick="window.location.href='product-preview.html?id=${product.id}'">Details</button>
         `;
 
-        // Add click event to button after it is created
+        // Add click event to "Add to Cart" button
         card.querySelector('.add-to-cart-btn').addEventListener('click', () => {
             const productData = {
                 id: product.id,
@@ -66,13 +89,11 @@ searchInput.addEventListener("keyup", () => {
     displayProducts(filtered);
 });
 
-// New: Focus the search input when the search icon is clicked
+// Focus the search input when the search icon is clicked
 searchIcon.addEventListener("click", () => {
-    searchInput.focus(); // Places the cursor in the search input
-    // Optional: Scroll to the product section smoothly
+    searchInput.focus();
     document.getElementById("product").scrollIntoView({ behavior: "smooth" });
 });
-
 
 
 
