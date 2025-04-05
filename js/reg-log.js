@@ -1,14 +1,29 @@
 const container = document.getElementById("container");
 const registerBtn = document.getElementById("register");
 const loginBtn = document.getElementById("login");
+const switchFormBtn = document.getElementById("switchFormBtn");
 
 // Toggle between forms
 registerBtn.addEventListener("click", () => container.classList.add("active"));
 loginBtn.addEventListener("click", () => container.classList.remove("active"));
+switchFormBtn.addEventListener("click", () => {
+    if (container.classList.contains("active")) {
+        container.classList.remove("active");
+        switchFormBtn.textContent = "Switch to Sign Up";
+    } else {
+        container.classList.add("active");
+        switchFormBtn.textContent = "Switch to Sign In";
+    }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     const regForm = document.getElementById("form");
     const loginForm = document.querySelector(".sign-in form");
+
+    // Set initial button text based on default view
+    if (!container.classList.contains("active")) {
+        switchFormBtn.textContent = "Switch to Sign Up";
+    }
 
     // Registration Form
     if (regForm) {
@@ -33,7 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
             users.push({ name, email, password });
             localStorage.setItem('users', JSON.stringify(users));
             regForm.reset();
-            container.classList.remove("active"); // Switch to login section
+            container.classList.remove("active");
+            switchFormBtn.textContent = "Switch to Sign Up";
             alert("Registration successful! Please login.");
         });
     }
