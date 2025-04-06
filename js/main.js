@@ -10,7 +10,43 @@ menuBtn.addEventListener("click", (e) => {
   const isOpen = navLinks.classList.contains("open");
   menuBtnIcon.setAttribute("class", isOpen ? "ri-close-line" : "ri-menu-line");
 });
+// sign out
 
+document.addEventListener('DOMContentLoaded', () => {
+  const signOutBtn = document.getElementById('signOutBtn');
+  function checkAuth() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      if (!isLoggedIn) {
+          window.location.href = 'reg-log.html'; 
+          return false;
+      }
+      return true;
+  }
+  function updateSignOutButton() {
+      const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+      if (signOutBtn) {
+          if (isLoggedIn) {
+              signOutBtn.classList.remove('hidden');
+          } else {
+              signOutBtn.classList.add('hidden');
+          }
+      }
+  }
+  if (!checkAuth()) {
+      return;
+  }
+
+  if (signOutBtn) {
+      signOutBtn.addEventListener('click', () => {
+          if (confirm('Are you sure you want to sign out?')) {
+              localStorage.removeItem('isLoggedIn');
+              updateSignOutButton();
+              window.location.href = 'reg-log.html';
+          }
+      });
+  }
+  updateSignOutButton();
+});
 
 navLinks.addEventListener("click", (e) => {
 //changing class to close

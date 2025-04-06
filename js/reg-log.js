@@ -1,3 +1,14 @@
+document.addEventListener('DOMContentLoaded', function () {
+    window.history.pushState(null, null, window.location.href);
+    
+    window.onpopstate = function () {
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'reg-log.html';
+        }
+    };
+});
+//
+
 const container = document.getElementById("container");
 const registerBtn = document.getElementById("register");
 const loginBtn = document.getElementById("login");

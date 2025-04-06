@@ -17,6 +17,26 @@ nav{
     background-color: var(--nav-bg);
     transition: background-color var(--main-transition);
 }
+.sign-out-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.sign-out-btn:hover {
+    background-color: #cc0000;
+}
+
+@media (width<=766) {
+    .sign-out-btn {
+        background-color: var(--primary-color);
+    }
+}
 /* dark */
 .nav-theme-toggle button {
     background: none;
@@ -159,6 +179,9 @@ color: var(--white);
 @media (width < 767px){
     .nav-cart i{
         display: none;
+    }
+    .sign-out-btn i{
+        font-size: 20px;
     }
 }
 @media (width > 767px){
